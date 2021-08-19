@@ -235,7 +235,7 @@ spec:
       limit: {{ $.Values.retryCount }}
     script:
       # image: hyperledger/fabric-tools:{{ $.Values.hyperledgerVersion }}
-      image: raft/hl-fabric-tools:1.4.3
+      image: nekia/hl-fabric-tools:1.4.3
       command: [sh]
       source: |
           if peer chaincode checkinstalled --name {{ $chaincode.name }} --version {{ $version }}; then  
@@ -332,7 +332,7 @@ spec:
       limit: {{ $.Values.retryCount }}
     script:
       # image: hyperledger/fabric-tools:{{ $.Values.hyperledgerVersion }}
-      image: raft/hl-fabric-tools:1.4.3
+      image: nekia/hl-fabric-tools:1.4.3
       command: [sh]
       source: |
           if peer chaincode checkinstantiated --name {{ $chaincode.name }} --version {{ $version }} --channelID {{ $channel.name }}; then  

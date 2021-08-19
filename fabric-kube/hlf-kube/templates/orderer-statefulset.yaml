@@ -174,7 +174,7 @@ spec:
 
       # Orderer container
       - name: orderer
-        image: hyperledger/fabric-orderer:{{ $.Values.hyperledgerVersion }}
+        image: nekia/fabric-orderer:{{ $.Values.hyperledgerVersion }}
         command: ["sh", "-c", "orderer"]
 
         volumeMounts:

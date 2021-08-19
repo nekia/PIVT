@@ -92,7 +92,7 @@ peer:
     
 # CouchDB settings. applies to all CouchDB's
 couchdb:
-  version: 0.4.15
+  version: arm64-0.4.20
   userName: 
   password:
   persistence:

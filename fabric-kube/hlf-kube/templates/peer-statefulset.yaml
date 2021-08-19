@@ -253,7 +253,7 @@ spec:
       
       # Peer container
       - name: peer
-        image: hyperledger/fabric-peer:{{ $.Values.hyperledgerVersion }}
+        image: nekia/fabric-peer:{{ $.Values.hyperledgerVersion }}
         command: ["sh", "-c", "peer node start"]
 
         volumeMounts:
@@ -368,7 +368,7 @@ spec:
 
       # CouchDB container
       - name: couchdb
-        image: hyperledger/fabric-couchdb:{{ $.Values.couchdb.version }}
+        image: chinyati/fabric-couchdb:{{ $.Values.couchdb.version }}
 
         volumeMounts:
         - mountPath: /opt/couchdb/data/
