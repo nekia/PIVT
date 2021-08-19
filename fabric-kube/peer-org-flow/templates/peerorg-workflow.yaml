@@ -678,7 +678,7 @@ spec:
       limit: {{ $.Values.retryCount }}
     script:
       # image: hyperledger/fabric-tools:{{ $.Values.hyperledgerVersion }}
-      image: raft/hl-fabric-tools:1.4.3
+      image: nekia/hl-fabric-tools:1.4.3
       command: [bash]
       source: |
           if peer channel checkexists --channelID {{ $channel.name }} -o {{ $ordererAddress }}:7050 \
