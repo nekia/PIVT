@@ -406,6 +406,8 @@ spec:
           value: /etc/hyperledger/fabric/tls/server.key
         - name: CORE_PEER_TLS_ROOTCERT_FILE
           value: /etc/hyperledger/fabric/tls/ca.crt
+        - name: CORE_CHAINCODE_BUILDER
+          value: nekia/fabric-ccenv:arm64-latest
 
 {{ end }} {{- /* if org */ -}} 
 {{ end }} {{- /* peer.Orgs */ -}}
