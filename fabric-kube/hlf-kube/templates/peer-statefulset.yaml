@@ -68,7 +68,7 @@ spec:
       {{- if not $.Values.peer.docker.dind.enabled }}
       - name: dockersocket
         hostPath:
-          path: /var/run/docker.sock
+          path: /var/run/containerd/containerd.sock
           type: Socket
       {{- end }}
       {{- if and $.Values.peer.docker.dind.enabled (not $.Values.peer.docker.dind.persistence.enabled) }}
