@@ -386,8 +386,7 @@ spec:
       - name: docker
         image: {{ $.Values.peer.docker.dind.image }}
         args:
-        - "--dns"
-        - "8.8.8.8"
+        - "--dns=8.8.8.8"
         securityContext:
           privileged: true
       
