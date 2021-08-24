@@ -338,6 +338,10 @@ spec:
         
         - name: CORE_CHAINCODE_BUILDER
           value: nekia/fabric-ccenv:{{ $.Values.hyperledgerVersion }}
+        - name: CORE_CHAINCODE_GOLANG_RUNTIME
+          value: busan15/fabric-baseos:arm64-0.4.20
+        - name: CORE_CHAINCODE_NODE_RUNTIME
+          value: busan15/fabric-baseimage:arm64-0.4.20
         - name: CORE_CHAINCODE_LOGGING_LEVEL
           value: {{ $.Values.peer.chaincode.logging.level }}
         - name: CORE_CHAINCODE_LOGGING_SHIM
