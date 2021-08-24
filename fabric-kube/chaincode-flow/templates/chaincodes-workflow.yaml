@@ -438,7 +438,7 @@ spec:
     retryStrategy:
       limit: {{ $.Values.retryCount }}
     script:
-      image: hyperledger/fabric-tools:{{ $.Values.hyperledgerVersion }}
+      image: nekia/fabric-tools:{{ $.Values.hyperledgerVersion }}
       command: [sh]
       source: |
           peer chaincode invoke -C {{ $channel.name }} -o {{ $vars.ordererUrl }} \

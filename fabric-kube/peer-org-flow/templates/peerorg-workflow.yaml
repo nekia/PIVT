@@ -419,7 +419,7 @@ spec:
     retryStrategy:
       limit: {{ $.Values.retryCount }}
     script:
-      image: hyperledger/fabric-tools:{{ $.Values.hyperledgerVersion }}
+      image: nekia/fabric-tools:{{ $.Values.hyperledgerVersion }}
       command: [bash]
       source: |
           peer channel fetch config /work/config_block.pb -c {{ $.Values.network.systemChannelID }} -o {{ $ordererAddress }}:7050 \
@@ -501,7 +501,7 @@ spec:
     retryStrategy:
       limit: {{ $.Values.retryCount }}
     script:
-      image: hyperledger/fabric-tools:{{ $.Values.hyperledgerVersion }}
+      image: nekia/fabric-tools:{{ $.Values.hyperledgerVersion }}
       command: [bash]
       source: |
           configtxgen -printOrg {{ $orgName }}MSP -configPath=/hlf_config/ > /work/new_org.json && 
@@ -574,7 +574,7 @@ spec:
       limit: {{ $.Values.retryCount }}
 
     container:
-      image: hyperledger/fabric-tools:{{ $.Values.hyperledgerVersion }}
+      image: nekia/fabric-tools:{{ $.Values.hyperledgerVersion }}
       command: ["sh", "-c", "peer channel signconfigtx -f /work/update.pb"]
 
       volumeMounts:
@@ -611,7 +611,7 @@ spec:
       limit: {{ $.Values.retryCount }}
         
     container:
-      image: hyperledger/fabric-tools:{{ $.Values.hyperledgerVersion }}
+      image: nekia/fabric-tools:{{ $.Values.hyperledgerVersion }}
 
       {{- if $.Values.flow.sendUpdate.systemChannel.enabled }}
       command: ["sh", "-c", "peer channel update -f /work/signed_update.pb -c {{ $.Values.network.systemChannelID }} -o {{ $ordererAddress }}:7050 \
@@ -751,7 +751,7 @@ spec:
     retryStrategy:
       limit: {{ $.Values.retryCount }}
     script:
-      image: hyperledger/fabric-tools:{{ $.Values.hyperledgerVersion }}
+      image: nekia/fabric-tools:{{ $.Values.hyperledgerVersion }}
       command: [bash]
       source: |
           peer channel fetch config /work/config_block.pb -c {{ $channel.name }} -o {{ $ordererAddress }}:7050 \
@@ -822,7 +822,7 @@ spec:
       limit: {{ $.Values.retryCount }}
         
     script:
-      image: hyperledger/fabric-tools:{{ $.Values.hyperledgerVersion }}
+      image: nekia/fabric-tools:{{ $.Values.hyperledgerVersion }}
       command: [bash]
       source: |
         configtxgen -printOrg {{ $orgName }}MSP -configPath=/hlf_config/ > /work/new_org.json &&
@@ -899,7 +899,7 @@ spec:
     retryStrategy:
       limit: {{ $.Values.retryCount }}
     script:
-      image: hyperledger/fabric-tools:{{ $.Values.hyperledgerVersion }}
+      image: nekia/fabric-tools:{{ $.Values.hyperledgerVersion }}
       command: [bash]
       source: |
           peer channel fetch config /work/config_block.pb -c {{ $channel.name }} -o {{ $ordererAddress }}:7050 \
@@ -972,7 +972,7 @@ spec:
       limit: {{ $.Values.retryCount }}
         
     container:
-      image: hyperledger/fabric-tools:{{ $.Values.hyperledgerVersion }}
+      image: nekia/fabric-tools:{{ $.Values.hyperledgerVersion }}
 
       {{- if $.Values.flow.sendUpdate.channel.enabled }}
       command: ["sh", "-c", "peer channel update -f /work/signed_update.pb -c {{ $channel.name }} -o {{ $ordererAddress }}:7050 \
