@@ -269,7 +269,8 @@ spec:
           # chaincode is packed with tar, first extract it 
           mkdir -p $GOPATH/src/chaincode && 
           tar -xf /hlf_config/chaincode/{{ $chaincode.name }}.tar -C $GOPATH/src/chaincode && 
-          go get github.com/hyperledger/fabric/core/chaincode/shim@v1.4.9 &&
+          go get github.com/hyperledger/fabric-chaincode-go/shim &&
+          go get github.com/hyperledger/fabric-protos-go/peer &&
           peer chaincode install --path chaincode/{{ $chaincode.name }} --name {{ $chaincode.name }} \
               --version {{ $version }} --lang {{ $language }}
 
