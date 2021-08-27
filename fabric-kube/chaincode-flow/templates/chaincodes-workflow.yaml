@@ -36,7 +36,19 @@ spec:
     hostnames: {{ $alias.hostnames }}
   {{- end }}
   {{- end }}{{""}}
-  
+
+  dnsConfig:
+    nameservers:
+      - 10.96.0.10
+      - 8.8.8.8
+    searches:
+      - default.svc.cluster.local
+      - svc.cluster.local
+      - cluster.local
+    options:
+      - name: ndots
+        value: "5"
+
   volumes:
   - name: orderer-tlsca
     secret:
@@ -257,6 +269,7 @@ spec:
           # chaincode is packed with tar, first extract it 
           mkdir -p $GOPATH/src/chaincode && 
           tar -xf /hlf_config/chaincode/{{ $chaincode.name }}.tar -C $GOPATH/src/chaincode && 
+          go get github.com/hyperledger/fabric/core/chaincode/shim@v1.4.9 &&
           peer chaincode install --path chaincode/{{ $chaincode.name }} --name {{ $chaincode.name }} \
               --version {{ $version }} --lang {{ $language }}
 
