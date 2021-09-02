@@ -300,7 +300,7 @@ spec:
       limit: {{ $.Values.retryCount }}
     script:
       # image: hyperledger/fabric-tools:{{ $.Values.hyperledgerVersion }}
-      image: nekia/fabric-tools:{{ $.Values.hyperledgerVersion }}
+      image: nekia/hl-fabric-tools:1.4.3
       command: [bash]
 
       # we are echoing logs to stderr by >&2, since to stdout only true|false should be printed
@@ -389,7 +389,7 @@ spec:
       limit: {{ $.Values.retryCount }}
     script:
       # image: hyperledger/fabric-tools:{{ $.Values.hyperledgerVersion }}
-      image: nekia/fabric-tools:{{ $.Values.hyperledgerVersion }}
+      image: nekia/hl-fabric-tools:1.4.3
       command: [bash]
 
       # we are echoing logs to stderr by >&2, since to stdout only true|false should be printed

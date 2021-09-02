@@ -678,9 +678,27 @@ spec:
       limit: {{ $.Values.retryCount }}
     script:
       # image: hyperledger/fabric-tools:{{ $.Values.hyperledgerVersion }}
-      image: nekia/fabric-tools:{{ $.Values.hyperledgerVersion }}
+      image: nekia/hl-fabric-tools:1.4.3
       command: [bash]
       source: |
+          if peer channel checkexists --channelID {{ $channel.name }} -o {{ $ordererAddress }}:7050 \
+              {{- if $.Values.tlsEnabled }}
+                  --tls --cafile /hlf_config/orderer-tlsca/tlscacert.pem \
+              {{- end }}
+          ; then 
+            echo '-- channel {{ $channel.name }} exists' 
+            echo true
+            echo true > /work/result
+            exit 0
+          else
+            result=$?
+            echo "-- result is: $result"
+            if test $result -ne 99; then
+              echo "-- result is not 99, exiting with $result"
+              exit $result
+            fi
+          fi
+
           echo false
           echo false > /work/result
 
